@@ -1,10 +1,27 @@
 <template>
 	<div class="subreddits container">
-		<h2>{{category | capitalize}}</h2>
+		<div class="grid">
+		<mu-row gutter>
+    		<mu-col width="70" tablet="50" desktop="30">
+    			<h2>{{category | capitalize}}</h2>
+    		</mu-col>
+    		<mu-col width="30" tablet="50" desktop="60">
+    			<mu-select-field v-model="currentSort" :labelFocusClass="['label-foucs']">
+					<mu-menu-item v-for="sort in sortOption" :value="sort" :title="sort"/>
+				</mu-select-field>
+    		</mu-col>
+  		</mu-row>
+  		</div>
+		
 		<ul class="item-list">
-			<ul v-for="post in subreddits"><li><subreddit :item="post"></subreddit></li></ul>
+			<ul v-for="post in subreddits">
+				<li><subreddit :item="post"></subreddit></li>
+				<mu-divider shallowInset/>
+			</ul>
 		</ul>
+
 		<mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loading-text="Loading..."/>
+
 	</div>
 </template>
 
@@ -20,7 +37,9 @@ import Subreddit from './Subreddit'
 				lastID: '',
 				loading: false,
 				scroller: null,
-				pageLimit: 25
+				pageLimit: 25,
+				currentSort: 'Top',
+				sortOption: ['Top', 'Hot', 'New', 'Rising']
 			}
 		},
 		mounted() {
@@ -28,6 +47,9 @@ import Subreddit from './Subreddit'
 		},
 		watch: {
 			category: function(newVal){
+				this.getData()
+			},
+			currentSort: function(newVal){
 				this.getData()
 			}
 		},
@@ -46,7 +68,7 @@ import Subreddit from './Subreddit'
 		},
 		methods: {
 			getData() {
-				this.$http.get('https://www.reddit.com/r/' + this.category + '/top.json?limit=' + this.pageLimit)
+				this.$http.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit)
 					.then((response) => {
 						this.subreddits = response.data.data.children
 						this.lastID = this.subreddits[this.pageLimit - 1].kind +'_'+ this.subreddits[this.pageLimit - 1].data.id
@@ -54,7 +76,7 @@ import Subreddit from './Subreddit'
 					});
 			},
 			getMoreData() {
-				this.$http.get('https://www.reddit.com/r/' + this.category + '/top.json?limit=' + this.pageLimit + '&after=' + this.lastID)
+				this.$http.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit + '&after=' + this.lastID)
 						.then((response) => {
 							this.subreddits = this.subreddits.concat(response.data.data.children)
 							let count = this.subreddits.length 
@@ -74,22 +96,20 @@ import Subreddit from './Subreddit'
 </script>
 
 <style scoped>
+
 	.container {
-		width: 100%;
+		max-width: 600px;
 		background: #ffffff;
 		box-shadow: 0 0 3px #cccccc;
 	}
 
-	.subreddits {
-		width: 100%;
-	}
 
 	.subreddits h2 {
 		font-size: 20px;
 		margin-bottom: 10px;
 		margin-top: 0px;
 		padding-top: 9px;
-		text-align: center;
+		max-width: 50px;
 	}
 
 	.subreddits .item-list {
@@ -106,10 +126,15 @@ import Subreddit from './Subreddit'
 
 	.subreddits .item-list li {
 		margin-bottom: 20px;
+		margin-top: 10px;
 	}
 
-	div {
-		display: block;
+	.grid h2 {
+		margin: 5px auto;
+	}
+
+	.mu-text-field {
+		margin-top: 9px;
 	}
 
 </style>

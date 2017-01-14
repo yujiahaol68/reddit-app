@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <mu-appbar title="Reddit App">
-        <mu-icon-menu icon="more_vert" slot="right" @change="channelChange" :value="channel">
+        <mu-icon-menu icon="more_vert" slot="right" @change="channelChange" :value="channel.toLowerCase()">
           <mu-menu-item v-for="category in categories" :value="category" :title="category"/>
         </mu-icon-menu>
       </mu-appbar>
@@ -21,8 +21,8 @@ export default {
   },
   data() {
     return {
-      channel: 'food',
-      categories: ['food', 'space', 'movies', 'funny', 'news']
+      channel: 'All',
+      categories: ['All', 'Food', 'Space', 'Movies', 'Funny', 'News']
     }
   },
   methods: {

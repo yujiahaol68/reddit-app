@@ -70,7 +70,7 @@
 	}
 
 	.subreddit .stats {
-		font-size: 12px;
+		font-size: 14px;
 		margin-right: 4px;
 		margin-top: 7px;
 		display: inline-block;

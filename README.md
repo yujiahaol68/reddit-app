@@ -1,6 +1,6 @@
 # redditapp
 
-> A Vue.js project
+> A reddit web app using vue + webpack. Data from reddit API
 
 ## Build Setup
 
