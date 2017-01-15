@@ -42,7 +42,7 @@ VueTouch.registerCustomEvent('doubletap', {
 Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.use(VueLazyload, {
-  preLoad: 1.1,
+  preLoad: 1.2,
   loading: 'http://ojt3x01ru.bkt.clouddn.com/image/loading/ring.gif',
   error: 'http://ojt3x01ru.bkt.clouddn.com/image/loading/ring.gif',
   attempt: 2,

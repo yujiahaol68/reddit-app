@@ -14,8 +14,10 @@
     "muse-ui": "^2.0.0-rc.2",
     "select-typeahead-vue": "0.0.6",
     "vue": "^2.1.0",
+    "vue-lazyload": "^1.0.0-rc9",
     "vue-resource": "^1.0.3",
-    "vue-select": "1.3.3"
+    "vue-select": "1.3.3",
+    "vue-touch": "^2.0.0-beta.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
