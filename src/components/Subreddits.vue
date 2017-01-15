@@ -28,9 +28,11 @@
 <script>
 import Subreddit from './Subreddit'
 
+import axios from 'axios'
+
 	export default {
 		name: 'subreddits',
-		props: ['category'],
+		props: ['category', 'refreshState'],
 		data() {
 			return {
 				subreddits: [],
@@ -47,9 +49,14 @@ import Subreddit from './Subreddit'
 		},
 		watch: {
 			category: function(newVal){
+				this.subreddits = []
 				this.getData()
 			},
 			currentSort: function(newVal){
+				this.getData()
+			},
+			refreshState: function(newVal){
+				this.subreddits = []
 				this.getData()
 			}
 		},
@@ -68,15 +75,15 @@ import Subreddit from './Subreddit'
 		},
 		methods: {
 			getData() {
-				this.$http.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit)
+				axios.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit)
 					.then((response) => {
 						this.subreddits = response.data.data.children
 						this.lastID = this.subreddits[this.pageLimit - 1].kind +'_'+ this.subreddits[this.pageLimit - 1].data.id
-						console.log(this.lastID)
+						//console.log(this.lastID)  DEBUG
 					});
 			},
 			getMoreData() {
-				this.$http.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit + '&after=' + this.lastID)
+				axios.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit + '&after=' + this.lastID)
 						.then((response) => {
 							this.subreddits = this.subreddits.concat(response.data.data.children)
 							let count = this.subreddits.length 

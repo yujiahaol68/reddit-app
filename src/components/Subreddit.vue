@@ -1,6 +1,6 @@
 <template>
 	<div class="subreddit">
-		<a :href="makeUrl(item.data.permalink)" :style="makeImage(item.data.thumbnail)" target="_self" class="thumbnail"></a>
+		<a :href="makeUrl(item.data.permalink)" v-lazy:background-image="makeImage(item.data.thumbnail)" target="_self" class="thumbnail"></a>
 		<div class="details">
 		<a :href="makeUrl(item.data.permalink)" :title="item.data.title" target="_self" class="title">
 			{{item.data.title | truncate}}
@@ -28,7 +28,7 @@
 		},
 		methods: {
 			makeImage: function(img) {
-				return 'background-image: url('+ img + ')';
+				return img
 			},
 			makeUrl: function(permalink) {
 				return 'http://reddit.com' + permalink;
