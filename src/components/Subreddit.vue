@@ -7,9 +7,9 @@
 		</a>
 		<br />
 			<div class="stats">
-				<i class="material-icons">thumbs_up_down</i>
+				<i class="iconfont icon-good"></i>
 				{{item.data.score}}
-				<i class="material-icons">forum</i>
+				<i class="iconfont icon-comment"></i>
 				{{item.data.num_comments}}
 			</div>
 		</div>
@@ -78,7 +78,6 @@
 	}
 
 	.subreddit .stats i {
-		font-size: 10px;
 		margin-right: 2px;
 	}
 </style>

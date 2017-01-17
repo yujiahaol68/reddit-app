@@ -1,5 +1,6 @@
 <template>
 	<div class="subreddits container">
+		<mu-toast v-if="toast" :message="toastMessage" @close="hideToast"/>
 		<div class="grid">
 		<mu-row gutter>
     		<mu-col width="70" tablet="50" desktop="30">
@@ -26,9 +27,9 @@
 </template>
 
 <script>
-import Subreddit from './Subreddit'
+import Subreddit from './Subreddit' 	//subreddit list item component
 
-import axios from 'axios'
+import axios from 'axios' 	//recommend plugin for ajax request
 
 	export default {
 		name: 'subreddits',
@@ -41,7 +42,9 @@ import axios from 'axios'
 				scroller: null,
 				pageLimit: 25,
 				currentSort: 'Top',
-				sortOption: ['Top', 'Hot', 'New', 'Rising']
+				sortOption: ['Top', 'Hot', 'New', 'Rising'],
+				toast: false,
+				toastMessage: ''
 			}
 		},
 		mounted() {
@@ -80,6 +83,10 @@ import axios from 'axios'
 						this.subreddits = response.data.data.children
 						this.lastID = this.subreddits[this.pageLimit - 1].kind +'_'+ this.subreddits[this.pageLimit - 1].data.id
 						//console.log(this.lastID)  DEBUG
+					})
+					.catch((error) => {
+						this.toastMessage = '网络错误，数据获取失败'
+						this.showToast()
 					});
 			},
 			getMoreData() {
@@ -88,6 +95,10 @@ import axios from 'axios'
 							this.subreddits = this.subreddits.concat(response.data.data.children)
 							let count = this.subreddits.length 
 							this.lastID = this.subreddits[count - 1].kind +'_'+ this.subreddits[count - 1].data.id
+						})
+						.catch((error) => {
+							this.toastMessage = '网络错误，数据获取失败'
+							this.showToast()
 						});
 			},
 			loadMore() {
@@ -97,7 +108,17 @@ import axios from 'axios'
 					this.getMoreData()
 					this.loading = false
 				}, 2000)
-			}
+			},
+			showToast() {
+			    this.toast = true
+			    if (this.toastTimer) clearTimeout(this.toastTimer)
+			    this.toastTimer = setTimeout(() => { this.toast = false }, 2000)
+    		},
+    		hideToast() {
+      			this.toast = false
+      			if (this.toastTimer) clearTimeout(this.toastTimer)
+      			this.toastMessage = ''
+    		}
 		}
 	}
 </script>
