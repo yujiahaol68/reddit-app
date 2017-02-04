@@ -2,39 +2,46 @@
   <div id="app">
     <v-touch @doubletap="refresh">
       <mu-appbar title="Reddit App" class="app-bar">
-        <mu-icon-button icon='menu' slot="left"/>
+        <mu-icon-button @click="toggleSidebar" icon="menu" slot="left"/>
         <mu-icon-menu icon="more_vert" slot="right" @change="channelChange" :value="channel.toLowerCase()">
           <mu-menu-item v-for="category in categories" :value="category" :title="category"/>
         </mu-icon-menu>
       </mu-appbar>
     </v-touch>
       <subreddits :category="channel" :refresh-state="refreshWhatever" class="container"></subreddits>
-
+      <sidebar :toggle-bar="toggle"></sidebar>
   </div>
 </template>
 
 <script>
 import Subreddits from './components/Subreddits'
+import Sidebar from './components/Sidebar'
+import Home from './pages/Home'
 
 export default {
   name: 'app',
   components: {
-    Subreddits
+    Subreddits, Sidebar, Home 
   },
   data() {
     return {
       channel: 'All',   //default channel
       categories: ['All', 'Food', 'Space', 'Movies', 'Funny', 'News'],    //popular channel
-      refreshWhatever: true   //doubleTap refresh whatever the value
+      refreshWhatever: true,   //doubleTap refresh whatever the value
+      toggle: false
     }
   },
   methods: {
-    channelChange(val) {
+    channelChange (val) {
       this.channel = val
     },
-    refresh() {
+    refresh () {
       console.log('refresh')
       this.refreshWhatever = !this.refreshWhatever    //change the value, DOM render again
+    },
+    toggleSidebar () {
+      console.log('sideBarToggle!')
+      this.toggle = !this.toggle
     }
   }
 }
@@ -57,12 +64,12 @@ export default {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(http://ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: url(//ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
     src: local('Material Icons'),
          local('MaterialIcons-Regular'),
-         url(http://ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-         url(http://ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.woff) format('woff'),
-         url(http://ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+         url(//ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+         url(//ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.woff) format('woff'),
+         url(//ojt3x01ru.bkt.clouddn.com/iconfont/MaterialIcons-Regular.ttf) format('truetype');
   }
 
   .material-icons {

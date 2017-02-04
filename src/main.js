@@ -32,7 +32,9 @@ import selectField from 'muse-components/selectField'
 import menuItem from 'muse-components/menu/menuItem'
 *********************** */
 /*DEV
-imoprt toast from 'muse-components/toast'*/
+imoprt toast from 'muse-components/toast'
+import drawer from 'muse-components/drawer'
+*/
 
 /*Apply components(PRODUCT)
 Vue.component(appBar.name, appBar)
@@ -48,6 +50,7 @@ Vue.component(menuItem.name, menuItem)*/
 //**********************
 /*DEV
 Vue.component(toast.name, toast)
+Vue.component(drawer.name, drawer)
  */
 
 
@@ -67,8 +70,8 @@ Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.use(VueLazyload, {
   preLoad: 1.2,
-  loading: 'http://ojt3x01ru.bkt.clouddn.com/image/loading/ring.gif',
-  error: 'http://ojt3x01ru.bkt.clouddn.com/image/post/Article.png',
+  loading: '//ojt3x01ru.bkt.clouddn.com/image/loading/ring.gif',
+  error: '//ojt3x01ru.bkt.clouddn.com/image/post/Article.png',
   attempt: 2,
   listenEvents: [ 'scroll' ]
 })
