@@ -1,50 +1,29 @@
 <template>
   <div id="app">
-    <v-touch @doubletap="refresh">
-      <mu-appbar title="Reddit App" class="app-bar">
-        <mu-icon-button @click="toggleSidebar" icon="menu" slot="left"/>
-        <mu-icon-menu icon="more_vert" slot="right" @change="channelChange" :value="channel.toLowerCase()">
-          <mu-menu-item v-for="category in categories" :value="category" :title="category"/>
-        </mu-icon-menu>
-      </mu-appbar>
-    </v-touch>
-      <subreddits :category="channel" :refresh-state="refreshWhatever" class="container"></subreddits>
+      <home></home>
       <sidebar :toggle-bar="toggle"></sidebar>
   </div>
 </template>
 
 <script>
-import Subreddits from './components/Subreddits'
 import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 
-export default {
-  name: 'app',
-  components: {
-    Subreddits, Sidebar, Home 
-  },
-  data() {
-    return {
-      channel: 'All',   //default channel
-      categories: ['All', 'Food', 'Space', 'Movies', 'Funny', 'News'],    //popular channel
-      refreshWhatever: true,   //doubleTap refresh whatever the value
-      toggle: false
+    export default {
+      name: 'app',
+      components: {
+        Sidebar, Home 
+      },
+      data () {
+        return {
+          toggle: false
+        }
+      },
+      methods: {
+
+      }
     }
-  },
-  methods: {
-    channelChange (val) {
-      this.channel = val
-    },
-    refresh () {
-      console.log('refresh')
-      this.refreshWhatever = !this.refreshWhatever    //change the value, DOM render again
-    },
-    toggleSidebar () {
-      console.log('sideBarToggle!')
-      this.toggle = !this.toggle
-    }
-  }
-}
+
 </script>
 
 <style>
@@ -99,14 +78,6 @@ export default {
 
   a {
     text-decoration: none;
-    color: black;
-  }
-
-  header {
-    background: coral;
-    color: #ffffff;
-    padding: 10px;
-    text-align: center;
   }
 
   .app-bar {
