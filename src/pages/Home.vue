@@ -2,7 +2,7 @@
     <div class="home">
         <v-touch @doubletap="refresh">
             <mu-appbar title="Reddit App" class="app-bar">
-                <mu-icon-button @click="toggleSidebar" icon="menu" slot="left"/>
+                <mu-icon-button @click="toggleSideBar" icon="menu" slot="left"/>
                 <mu-icon-menu icon="more_vert" slot="right" @change="channelChange" :value="channel.toLowerCase()">
                 <mu-menu-item v-for="category in categories" :value="category" :title="category"/>
                 </mu-icon-menu>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import Subreddits from '../components/Subreddits'
 
     export default {
@@ -28,16 +29,15 @@ import Subreddits from '../components/Subreddits'
             }
         },
         methods: {
+            ...mapMutations([
+                'toggleSideBar'
+            ]),
             channelChange (val) {
                 this.channel = val
             },
             refresh () {
                 console.log('refresh')
                 this.refreshWhatever = !this.refreshWhatever    //change the value, DOM render again
-            },
-            toggleSidebar () {
-                console.log('sideBarToggle!')
-                this.$store.state.sideBarOpened = true
             }
         }
             

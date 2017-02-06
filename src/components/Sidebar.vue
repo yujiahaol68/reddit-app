@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <mu-drawer :open="open" :docked="docked" @close="close()">
+        <mu-drawer :open="openState" :docked="docked" @close="sideBarClose()">
             <mu-list @itemClick="docked ? '' : toggle()" class="menu-list">
                 <mu-list-item title="Home">
                     <mu-icon slot="left" value="home"/>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
     export default {
         name: 'sidebar',
@@ -27,14 +29,14 @@
             }
         },
         methods: {
-            close () {
-                this.$store.state.sideBarOpened = false
-            }
+            ...mapMutations([
+                'sideBarClose'
+            ])
         },
         computed: {
-            open () {
-                return this.$store.state.sideBarOpened
-            }
+            ...mapGetters([
+                'openState'
+            ])
         }
     }
     
