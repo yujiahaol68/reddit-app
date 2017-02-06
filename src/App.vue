@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <home></home>
-      <sidebar :toggle-bar="toggle"></sidebar>
+      <sidebar></sidebar>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ import Home from './pages/Home'
       },
       data () {
         return {
-          toggle: false
+      
         }
       },
       methods: {

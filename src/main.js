@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueTouch from 'vue-touch'
 import VueRouter from 'vue-router'
+import { store } from './store/store'
 
 //UI framework
 //For dev
@@ -95,6 +96,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   template: '<App/>',
   components: { App }
 })

@@ -25,7 +25,6 @@ import Subreddits from '../components/Subreddits'
                 channel: 'All',   //default channel
                 categories: ['All', 'Food', 'Space', 'Movies', 'Funny', 'News'],    //popular channel
                 refreshWhatever: true,   //doubleTap refresh whatever the value
-                toggle: false       //toggle SideBar
             }
         },
         methods: {
@@ -38,7 +37,7 @@ import Subreddits from '../components/Subreddits'
             },
             toggleSidebar () {
                 console.log('sideBarToggle!')
-                this.toggle = !this.toggle
+                this.$store.state.sideBarOpened = true
             }
         }
             

@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <mu-drawer :open="open" :docked="docked" @close="toggle()">
+        <mu-drawer :open="open" :docked="docked" @close="close()">
             <mu-list @itemClick="docked ? '' : toggle()" class="menu-list">
                 <mu-list-item title="Home">
                     <mu-icon slot="left" value="home"/>
@@ -18,24 +18,22 @@
 
     export default {
         name: 'sidebar',
-        props: [ 'toggleBar' ],
         components: {
 
         },
         data () {
             return {
-                open: false,
                 docked: false
             }
         },
         methods: {
-            toggle () {
-                this.open = !this.open
+            close () {
+                this.$store.state.sideBarOpened = false
             }
         },
-        watch: {
-            toggleBar: function (newVal) {
-                this.open = true
+        computed: {
+            open () {
+                return this.$store.state.sideBarOpened
             }
         }
     }
