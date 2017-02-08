@@ -1,14 +1,18 @@
 <template>
     <div class="sidebar">
         <mu-drawer :open="openState" :docked="docked" @close="sideBarClose()">
-            <mu-list @itemClick="docked ? '' : toggle()" class="menu-list">
-                <mu-list-item title="Home">
-                    <mu-icon slot="left" value="home"/>
-                </mu-list-item>
+            <mu-list class="menu-list">
+                <router-link to="/">
+                    <mu-list-item title="Home" @click="sideBarClose()">
+                        <mu-icon slot="left" value="home"/>
+                    </mu-list-item>
+                </router-link>
                 <mu-divider />
-                <mu-list-item title="GIFs">
-                    <mu-icon slot="left" value="videocam"/>
-                </mu-list-item>
+                <router-link to="/gifs">
+                    <mu-list-item title="GIFs" @click="sideBarClose()">
+                        <mu-icon slot="left" value="videocam"/>
+                    </mu-list-item>
+                </router-link>
             </mu-list>
         </mu-drawer>
     </div>

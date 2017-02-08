@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueTouch from 'vue-touch'
 import VueRouter from 'vue-router'
+import { routes } from './routes'
 import { store } from './store/store'
 
 //UI framework
@@ -78,25 +79,20 @@ Vue.use(VueLazyload, {
 })
 
 Vue.use(VueRouter)
-
-//For dev
-Vue.use(MuseUI)
-
 //Routes Configuration
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
-  routes: [
-    
-  ]
+  routes
 })
 
+//For dev
+Vue.use(MuseUI)
 
 //Router Setup into root component
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,
-  template: '<App/>',
-  components: { App }
+  router,
+  render: h => h(App)
 })
