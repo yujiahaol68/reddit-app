@@ -2,17 +2,22 @@
     <div class="sidebar">
         <mu-drawer :open="openState" :docked="docked" @close="sideBarClose()">
             <mu-list class="menu-list">
-                <router-link to="/">
+                <router-link to="/" tag="div" active-class="active-item" exact>
+                    <a>
                     <mu-list-item title="Home" @click="sideBarClose()">
                         <mu-icon slot="left" value="home"/>
                     </mu-list-item>
+                    </a>
                 </router-link>
-                <mu-divider />
-                <router-link to="/gifs">
+               
+                <router-link to="/gifs" tag="div" active-class="active-item">
+                    <a>
                     <mu-list-item title="GIFs" @click="sideBarClose()">
                         <mu-icon slot="left" value="videocam"/>
                     </mu-list-item>
+                    </a>
                 </router-link>
+                
             </mu-list>
         </mu-drawer>
     </div>
@@ -50,6 +55,10 @@ import { mapGetters } from 'vuex'
 
 .menu-list {
     padding-top: 100px;
+}
+
+.active-item {
+    border-left: solid 2px #00ADF4;
 }
 
 </style>
