@@ -1,4 +1,6 @@
 {
     "vsicons.presets.angular": false,
-    "jshint.enable" : false
+    "jshint.enable" : false,
+    "stylelint.enable": true,
+    "css.validate": false
 }
