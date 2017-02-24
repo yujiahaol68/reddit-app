@@ -1,24 +1,33 @@
 <template>
-    <div class="image-viewer">
-        <div class="img-container">
-        
-        </div>
+    <div class="image-viewer" @click="closeViewer">
+        <img :src="sourceUrl">
     </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
+
     export default {
         name: 'imageviewer',
-        props: [
-            'imgSource'
-        ],
         data () {
             return {
                 
             }
         },
+        computed: {
+            ...mapGetters([
+              'sourceUrl'  
+            ])
+        },
         methods: {
-            
+            ...mapMutations([
+                
+            ]),
+            closeViewer () {
+                console.log('Exit Viewer!')
+                this.$router.push('/')
+            }
         }
     }
 </script>
@@ -26,12 +35,15 @@
 <style scoped>
 
 .image-viewer {
-
+    background-color: black;
+    line-height: 600px;
+    overflow-y: hidden;
 }
 
-.img-container {
-    padding: auto 0px;
-    background: #ffffff no-repeat fixed center;
+.image-viewer img {
+    line-height: 600px;
+    vertical-align: middle;
+    width: 100%;
 }
 
 </style>

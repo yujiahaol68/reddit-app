@@ -46,4 +46,9 @@ import Subreddits from '../components/Subreddits'
 
 <style scoped>
 
+.home {
+    color: #666666;
+    background: #f4f4f4;    
+}
+
 </style>

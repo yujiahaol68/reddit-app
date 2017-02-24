@@ -5,18 +5,20 @@ const state = {
     authorAvatar: '...defaultImageLink',
     hasImg: true,
     headImgSourse: '',
-    body: ''
+    body: '',
+    permalink: ''
 }
 
 const getters = {
     resetPost: state => {
         state.hasHTML = false
-        state.title = '',
-        state.author = '',
-        state.authorAvatar = '...defaultImageLink',
-        state.hasImg = true,
-        state.headImgSourse = '',
+        state.title = ''
+        state.author = ''
+        state.authorAvatar = '...defaultImageLink'
+        state.hasImg = true
+        state.headImgSourse = ''
         state.body = ''
+        state.permalink = ''
     }
 }
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="subreddit">
-		<a :href="makeUrl(item.data.permalink)" v-lazy:background-image="makeImage(item.data.thumbnail)" target="_self" class="thumbnail"></a>
+		<router-link v-lazy:background-image="makeImage(item.data.thumbnail)" target="_self" class="thumbnail" tag="div" to="viewer" @click.native="sendImgData(item.data.url)"></router-link>
 		<div class="details">
 		<a :href="makeUrl(item.data.permalink)" :title="item.data.title" target="_self" class="title">
 			{{item.data.title | truncate}}
@@ -32,6 +32,23 @@
 			},
 			makeUrl: function(permalink) {
 				return 'http://reddit.com' + permalink;
+			},
+			hasImgLink: function(link) {
+				let linkArray = link.split('.')
+				return linkArray[linkArray.length - 1] === 'jpg'
+			},
+			sendImgData: function(imgUrl) {
+				console.log(imgUrl)
+				if(this.hasImgLink(imgUrl))
+				{
+					console.log('hasImage')
+					this.$store.state.imageUrl = imgUrl
+				} else {
+					console.log('OnlyThumbnail')
+					console.log(this.item.data.thumbnail)
+					this.$store.state.imageUrl = this.item.data.thumbnail
+				}
+				console.log('commitURL!')
 			}
 		},
 		filters: {
@@ -66,7 +83,7 @@
 	.subreddit .details .title {
 		font-size: 15px;
 		margin-bottom: 5px;
-		color: steelblue;
+		color: black;
 	}
 
 	.subreddit .stats {

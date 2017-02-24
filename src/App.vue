@@ -34,11 +34,6 @@ import Home from './pages/Home'
     padding: 0;
     font-family: 'Roboto', 'Helvetica', sans-serif;
   }
-
-  body {
-    color: #666666;
-    background: #f4f4f4;
-  }
   
   /* self host material iconfont avoid being blocked in some mobile browser */
   @font-face {
