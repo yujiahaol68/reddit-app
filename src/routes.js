@@ -5,9 +5,9 @@ import NotFound from './pages/NotFound.vue'
 import ImageViewer from './components/ImageViewer.vue'
 
 export const routes = [
-    { path: '', component: Home },
-    { path: '/gifs', component: Gifs },
-    { path: '/subdetail', component: Subdetail },
-    { path: '/viewer', component: ImageViewer},
-    { path: '*', component: NotFound }
+    { path: '', component: Home, name: 'home' },
+    { path: '/gifs', component: Gifs, name: 'gifs' },
+    { path: '/subdetail', component: Subdetail, name: 'subdetail' },
+    { path: '/viewer', component: ImageViewer, name: 'imageViewer' },
+    { path: '*', component: NotFound, name: 'notFound' }
 ]

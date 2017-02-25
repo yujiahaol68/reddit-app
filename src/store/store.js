@@ -10,7 +10,9 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     
     state: {
-        imageUrl: ''
+        imageUrl: '',
+        infiniteScrollEnable: false,
+        scroller: window
     },
     getters: {
         sourceUrl: state => {

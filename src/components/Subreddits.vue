@@ -38,8 +38,6 @@ import axios from 'axios' 	//recommend plugin for ajax request
 			return {
 				subreddits: [],
 				lastID: '',
-				loading: false,
-				scroller: null,
 				pageLimit: 25,
 				currentSort: 'Top',
 				sortOption: ['Top', 'Hot', 'New', 'Rising'],
@@ -47,8 +45,21 @@ import axios from 'axios' 	//recommend plugin for ajax request
 				toastMessage: ''
 			}
 		},
+		computed: {
+			loading () {
+				return this.$store.state.infiniteScrollEnable
+			},
+			scroller () {
+				if(this.$route.name === 'home')
+				{
+					return this.$store.state.scroller
+				} else {
+					return null
+				}
+			}
+		},
 		mounted() {
-			this.scroller = window
+			
 		},
 		watch: {
 			category: function(newVal){
@@ -103,10 +114,10 @@ import axios from 'axios' 	//recommend plugin for ajax request
 			},
 			loadMore() {
 				console.log('Loading')
-				this.loading = true
+				this.$store.state.infiniteScrollEnable = true
 				setTimeout(() => {
 					this.getMoreData()
-					this.loading = false
+					this.$store.state.infiniteScrollEnable = false
 				}, 2000)
 			},
 			showToast() {
