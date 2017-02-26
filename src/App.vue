@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <transition :name="transitionName">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
       <sidebar></sidebar>
   </div>
 </template>
@@ -18,7 +20,7 @@ import Home from './pages/Home'
       },
       data () {
         return {
-      
+          transitionName: ''
         }
       },
       methods: {

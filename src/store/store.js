@@ -10,14 +10,11 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     
     state: {
-        imageUrl: '',
         infiniteScrollEnable: false,
         scroller: window
     },
     getters: {
-        sourceUrl: state => {
-            return state.imageUrl
-        }
+        
     },
     mutations: {
         

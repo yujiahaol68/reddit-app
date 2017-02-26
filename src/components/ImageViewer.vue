@@ -1,6 +1,7 @@
 <template>
     <div class="image-viewer" @click="closeViewer">
-        <img :src="sourceUrl">
+        <img v-if="isLoading" src="http://ojt3x01ru.bkt.clouddn.com/image/loading/circleLoading.svg" style="max-width: 48px"></img>
+        <img v-else :src="sourceUrl">
     </div>
 </template>
 
@@ -12,8 +13,11 @@ import { mapGetters } from 'vuex'
         name: 'imageviewer',
         data () {
             return {
-                
+                isLoading: true
             }
+        },
+        activated () {
+            this.delayLoading()
         },
         computed: {
             ...mapGetters([
@@ -26,7 +30,13 @@ import { mapGetters } from 'vuex'
             ]),
             closeViewer () {
                 console.log('Exit Viewer!')
+                this.isLoading = true
                 this.$router.push('/')
+            },
+            delayLoading () {
+                setTimeout(() => {
+                    this.isLoading = false
+                } , 800)
             }
         }
     }
@@ -37,7 +47,7 @@ import { mapGetters } from 'vuex'
 .image-viewer {
     background-color: black;
     line-height: 600px;
-    overflow-y: hidden;
+    text-align: center;
 }
 
 .image-viewer img {

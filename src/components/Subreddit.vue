@@ -42,11 +42,11 @@
 				if(this.hasImgLink(imgUrl))
 				{
 					console.log('hasImage')
-					this.$store.state.imageUrl = imgUrl
+					this.$store.state.imgView.imageUrl = imgUrl
 				} else {
 					console.log('OnlyThumbnail')
 					console.log(this.item.data.thumbnail)
-					this.$store.state.imageUrl = this.item.data.thumbnail
+					this.$store.state.imgView.imageUrl = this.item.data.thumbnail
 				}
 				console.log('commitURL!')
 			}
