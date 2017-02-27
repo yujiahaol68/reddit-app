@@ -2,7 +2,7 @@
     <div class="sidebar">
         <mu-drawer :open="openState" :docked="docked" @close="sideBarClose()">
             <mu-list class="menu-list">
-                <router-link to="/" tag="div" active-class="active-item" exact>
+                <router-link :to="{ name: 'home' }" tag="div" active-class="active-item" exact>
                     <a>
                     <mu-list-item title="Home" @click="sideBarClose()">
                         <mu-icon slot="left" value="home"/>
@@ -10,7 +10,7 @@
                     </a>
                 </router-link>
                
-                <router-link to="/gifs" tag="div" active-class="active-item">
+                <router-link :to="{ name: 'gifs' }" tag="div" active-class="active-item">
                     <a>
                     <mu-list-item title="GIFs" @click="sideBarClose()">
                         <mu-icon slot="left" value="videocam"/>

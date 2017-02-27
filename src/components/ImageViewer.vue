@@ -1,7 +1,7 @@
 <template>
     <div class="image-viewer" @click="closeViewer">
-        <img v-if="isLoading" src="http://ojt3x01ru.bkt.clouddn.com/image/loading/circleLoading.svg" style="max-width: 48px"></img>
-        <img v-else :src="sourceUrl">
+        <img v-if="isLoading" src="http://ojt3x01ru.bkt.clouddn.com/image/loading/circleLoading.svg" class="transition-img"></img>
+        <img v-else :src="sourceUrl" class="showed-img">
     </div>
 </template>
 
@@ -17,7 +17,13 @@ import { mapGetters } from 'vuex'
             }
         },
         activated () {
-            this.delayLoading()
+            if (this.sourceUrl.length !== 0)
+            {
+                this.delayLoading()
+            } else {
+                console.log('imgURL is empty!')
+                this.$router.go(-1)
+            }
         },
         computed: {
             ...mapGetters([
@@ -31,7 +37,7 @@ import { mapGetters } from 'vuex'
             closeViewer () {
                 console.log('Exit Viewer!')
                 this.isLoading = true
-                this.$router.push('/')
+                this.$router.push({ name: 'home' })
             },
             delayLoading () {
                 setTimeout(() => {
@@ -50,10 +56,14 @@ import { mapGetters } from 'vuex'
     text-align: center;
 }
 
-.image-viewer img {
+.showed-img {
     line-height: 600px;
     vertical-align: middle;
     width: 100%;
+}
+
+.transition-img {
+    max-width: 48px;
 }
 
 </style>
