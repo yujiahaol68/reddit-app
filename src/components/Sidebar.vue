@@ -51,14 +51,15 @@ import { mapGetters } from 'vuex'
     
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$left-border-color: #00ADF4;
 
 .menu-list {
     padding-top: 100px;
 }
 
 .active-item {
-    border-left: solid 2px #00ADF4;
+    border-left: solid 2px $left-border-color;
 }
 
 </style>

@@ -48,22 +48,26 @@ import { mapGetters } from 'vuex'
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+$line-height: 600px;
+$loading-img-max-width: 48px;
+
 
 .image-viewer {
     background-color: black;
-    line-height: 600px;
+    line-height: $line-height;
     text-align: center;
 }
 
 .showed-img {
-    line-height: 600px;
+    line-height: $line-height;
     vertical-align: middle;
     width: 100%;
 }
 
 .transition-img {
-    max-width: 48px;
+    max-width: loading-img-max-width;
 }
 
 </style>

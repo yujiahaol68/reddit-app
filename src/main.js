@@ -12,9 +12,12 @@ import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-default.css'
 
-/*For production
-import 'muse-components/styles/base.less'
-import 'muse-components/grid/grid.less'*/
+//Custom StyleSheet
+import './assets/css/animation.css'
+
+//For production
+//import 'muse-components/styles/base.less'
+//import 'muse-components/grid/grid.less'
 
 //import external components
 import VueLazyload from 'vue-lazyload'    //image lazy load
@@ -32,10 +35,10 @@ import col from 'muse-components/grid/col'
 import row from 'muse-components/grid/row'
 import selectField from 'muse-components/selectField'
 import menuItem from 'muse-components/menu/menuItem'
-*********************** */
-/*DEV
-imoprt toast from 'muse-components/toast'
 import drawer from 'muse-components/drawer'
+import icon from 'muse-components/icon'
+import list from 'muse-components/list/list'
+import listItem from 'muse-components/list/listItem'
 */
 
 /*Apply components(PRODUCT)
@@ -48,12 +51,12 @@ Vue.component(infiniteScroll.name, infiniteScroll)
 Vue.component(col.name, col)
 Vue.component(row.name, row)
 Vue.component(selectField.name, selectField)
-Vue.component(menuItem.name, menuItem)*/
-//**********************
-/*DEV
-Vue.component(toast.name, toast)
+Vue.component(menuItem.name, menuItem)
 Vue.component(drawer.name, drawer)
- */
+Vue.component(icon.name, icon)
+Vue.component(list.name, list)
+Vue.component(listItem.name, listItem)
+*/
 
 
 //vue-touch gesture configuration

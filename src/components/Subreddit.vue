@@ -64,7 +64,9 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$weak-color: #666666;
+
 	.subreddit {
 		display: flex;
 	}
@@ -91,7 +93,7 @@
 		margin-right: 4px;
 		margin-top: 7px;
 		display: inline-block;
-		color: #666666;
+		color: $weak-color;
 	}
 
 	.subreddit .stats i {

@@ -1,5 +1,5 @@
 <template>
-    <div class="not-found">
+    <div class="not-found" v-once>
         <h1>Ops..</h1>
         <h2>Not the page you are looing for</h2>
         <h2>404</h2>
@@ -31,16 +31,20 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 .not-found {
     text-align: center;
+    background-color: #f4f4f4;
+    height: 600px;
+
+    h3 {
+        color: lightgreen;
+    }
+
+    h1 {
+        color: coral;
+    }
 }
 
-.not-found h3 {
-    color: lightgreen;
-}
-
-.not-found h1 {
-    color: palevioletred;
-}
 </style>

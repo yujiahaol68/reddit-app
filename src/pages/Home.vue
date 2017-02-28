@@ -51,4 +51,8 @@ import Subreddits from '../components/Subreddits'
     background: #f4f4f4;    
 }
 
+.container {
+    padding-top: 56px;
+}
+
 </style>
