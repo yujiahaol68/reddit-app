@@ -5,6 +5,14 @@ import VueTouch from 'vue-touch'
 import VueRouter from 'vue-router'
 import { routes } from './routes'
 import { store } from './store/store'
+//import FastClick from 'fastclick'
+
+/*FastClick
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+  }, false);
+}*/
 
 //UI framework
 //For dev

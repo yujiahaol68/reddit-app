@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "fastclick": "^1.0.6",
     "keycode": "^2.1.8",
     "muse-ui": "^2.0.0-rc.2",
     "select-typeahead-vue": "0.0.6",

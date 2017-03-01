@@ -1,10 +1,10 @@
 <template>
 	<div class="subreddit">
-		<router-link v-lazy:background-image="makeImage(item.data.thumbnail)" target="_self" class="thumbnail" tag="div" to="viewer" @click.native="sendImgData(item.data.url)"></router-link>
+		<router-link v-lazy:background-image="makeImage(item.data.thumbnail)" class="thumbnail" tag="div" :to="{ name: 'imageViewer' }" @click.native="sendImgData(item.data.url)"></router-link>
 		<div class="details">
-		<a :href="makeUrl(item.data.permalink)" :title="item.data.title" target="_self" class="title">
+		<router-link :to="{ name: 'subdetail' }" class="title">
 			{{item.data.title | truncate}}
-		</a>
+		</router-link>
 		<br />
 			<div class="stats">
 				<i class="iconfont icon-good"></i>
@@ -23,7 +23,7 @@
 		props: ['item'],
 		data() {
 			return {
-
+				
 			}
 		},
 		methods: {
@@ -39,7 +39,7 @@
 			},
 			sendImgData: function(imgUrl) {
 				console.log(imgUrl)
-				if(this.hasImgLink(imgUrl))
+				if (this.hasImgLink(imgUrl))
 				{
 					console.log('hasImage')
 					this.$store.state.imgView.imageUrl = imgUrl

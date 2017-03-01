@@ -1,8 +1,10 @@
 <template>
-    <div class="image-viewer" @click="closeViewer">
+    <transition enter-active-class="animated zoomIn">
+    <div class="image-viewer">
         <img v-if="isLoading" src="http://ojt3x01ru.bkt.clouddn.com/image/loading/circleLoading.svg" class="transition-img"></img>
         <img v-else :src="sourceUrl" class="showed-img">
     </div>
+    </transition>
 </template>
 
 <script>
@@ -22,13 +24,16 @@ import { mapGetters } from 'vuex'
                 this.delayLoading()
             } else {
                 console.log('imgURL is empty!')
-                this.$router.go(-1)
+                this.isLoading = true
             }
         },
         computed: {
             ...mapGetters([
               'sourceUrl'  
             ])
+        },
+        watch: {
+            '$route': 'closeViewer'
         },
         methods: {
             ...mapMutations([
@@ -37,7 +42,6 @@ import { mapGetters } from 'vuex'
             closeViewer () {
                 console.log('Exit Viewer!')
                 this.isLoading = true
-                this.$router.push({ name: 'home' })
             },
             delayLoading () {
                 setTimeout(() => {
