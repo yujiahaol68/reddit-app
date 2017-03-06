@@ -18,6 +18,8 @@
 </template>
 
 <script>
+require('../assets/sass/subreddit.scss')
+
 	export default {
 		name: 'subreddit',
 		props: ['item'],
@@ -63,40 +65,3 @@
 		}
 	}
 </script>
-
-<style lang="scss" scoped>
-$weak-color: #666666;
-
-	.subreddit {
-		display: flex;
-	}
-
-	.subreddit .thumbnail {
-		display: block;
-		flex: 0 0 65px;
-		height: 65px;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		margin-right: 12px;
-		border-radius: 3px;
-	}
-
-	.subreddit .details .title {
-		font-size: 15px;
-		margin-bottom: 5px;
-		color: black;
-	}
-
-	.subreddit .stats {
-		font-size: 14px;
-		margin-right: 4px;
-		margin-top: 7px;
-		display: inline-block;
-		color: $weak-color;
-	}
-
-	.subreddit .stats i {
-		margin-right: 2px;
-	}
-</style>

@@ -28,7 +28,6 @@
 
 <script>
 import Subreddit from './Subreddit' 	//subreddit list item component
-
 import axios from 'axios' 	//recommend plugin for ajax request
 
 	export default {
@@ -137,9 +136,10 @@ import axios from 'axios' 	//recommend plugin for ajax request
 <style scoped>
 
 	.container {
-		max-width: 600px;
+		max-width: 700px;
 		background: #ffffff;
 		box-shadow: 0 0 3px #cccccc;
+		margin: auto;
 	}
 
 

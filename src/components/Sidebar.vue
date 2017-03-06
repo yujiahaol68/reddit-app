@@ -24,6 +24,8 @@
 </template>
 
 <script>
+require('../assets/sass/sidebar.scss')
+
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'
 
@@ -50,16 +52,3 @@ import { mapGetters } from 'vuex'
     }
     
 </script>
-
-<style lang="scss" scoped>
-$left-border-color: #00ADF4;
-
-.menu-list {
-    padding-top: 100px;
-}
-
-.active-item {
-    border-left: solid 2px $left-border-color;
-}
-
-</style>
