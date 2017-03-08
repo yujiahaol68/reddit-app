@@ -4,9 +4,7 @@ const state = {
 }
 
 const getters = {
-    sourceUrl: state => {
-        return state.imageUrl
-    }
+    sourceUrl: state => state.imageUrl
 }
 
 const mutations = {

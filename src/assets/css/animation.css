@@ -133,21 +133,11 @@
   animation-name: slideInRight;
 }
 
-.slide-left-enter, .slide-right-leave-active {
-	opacity: 0;
-	transform: translate(30*$px,0);
-}
-
-.slide-left-leave-active, .slide-right-enter {
-	opacity: 0;
-	transform: translate(-30*$px 0);
-}
-
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0
 }
 

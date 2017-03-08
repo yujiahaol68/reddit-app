@@ -3,9 +3,7 @@ const state = {
 }
 
 const getters = {
-    openState: state => {
-        return state.sideBarOpened
-    }
+    openState: state => state.sideBarOpened
 }
 
 const mutations = {

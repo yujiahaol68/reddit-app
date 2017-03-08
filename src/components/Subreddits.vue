@@ -2,10 +2,10 @@
 	<div class="subreddits container">
 		<mu-toast v-if="toast" :message="toastMessage" @close="hideToast"/>
 		<div class="grid">
-		<mu-row gutter>
-    		<mu-col width="70" tablet="50" desktop="30">
-    			<h2>{{category | capitalize}}</h2>
-    		</mu-col>
+		<mu-row gutter>	
+				<mu-dropDown-menu :value="category" @change="categoryChange" v-bind:auto-width="true">
+					<mu-menu-item v-for="category in categories" :value="category" :title="capitalize(category)"/>
+				</mu-dropDown-menu>    		
     		<mu-col width="30" tablet="50" desktop="60">
     			<mu-select-field v-model="currentSort" :labelFocusClass="['label-foucs']">
 					<mu-menu-item v-for="sort in sortOption" :value="sort" :title="sort"/>
@@ -27,12 +27,17 @@
 </template>
 
 <script>
+require('../assets/sass/subreddits.scss')
+
 import Subreddit from './Subreddit' 	//subreddit list item component
 import axios from 'axios' 	//recommend plugin for ajax request
 
+import { mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
+
 	export default {
 		name: 'subreddits',
-		props: ['category', 'refreshState'],
+		props: ['refreshState'],
 		data() {
 			return {
 				subreddits: [],
@@ -40,8 +45,10 @@ import axios from 'axios' 	//recommend plugin for ajax request
 				pageLimit: 25,
 				currentSort: 'Top',
 				sortOption: ['Top', 'Hot', 'New', 'Rising'],
+				category: 'all',
+				categories: ['all', 'food', 'space', 'movies', 'funny', 'news'],
 				toast: false,
-				toastMessage: ''
+				toastMessage: ''				
 			}
 		},
 		computed: {
@@ -76,17 +83,19 @@ import axios from 'axios' 	//recommend plugin for ajax request
 		components: {
 			Subreddit
 		},
-		filters: {
-			capitalize: function(val) {
-				if(!val) return '';
-				val = val.toString();
-				return val.charAt(0).toUpperCase() + val.slice(1);
-			}
-		},
 		created() {
 			this.getData()
 		},
 		methods: {
+			categoryChange(newVal) {
+				this.category = newVal
+				console.log(this.category)
+			},
+			capitalize: function(val) {
+				if(!val) return '';
+				val = val.toString();
+				return val.charAt(0).toUpperCase() + val.slice(1);
+			},
 			getData() {
 				axios.get('https://www.reddit.com/r/' + this.category +'/'+ this.currentSort.toLowerCase() + '.json?limit=' + this.pageLimit)
 					.then((response) => {
@@ -132,48 +141,3 @@ import axios from 'axios' 	//recommend plugin for ajax request
 		}
 	}
 </script>
-
-<style scoped>
-
-	.container {
-		max-width: 700px;
-		background: #ffffff;
-		box-shadow: 0 0 3px #cccccc;
-		margin: auto;
-	}
-
-
-	.subreddits h2 {
-		font-size: 20px;
-		margin-bottom: 10px;
-		margin-top: 0px;
-		padding-top: 9px;
-		max-width: 50px;
-	}
-
-	.subreddits .item-list {
-		border-top: 1px solid #cccccc;
-		padding-top: 15px;
-		padding-left: 0px;
-		list-style: none;
-	}
-
-	.item-list ul {
-		list-style-type: none;
-		padding: 0px 6px 6px 8px;
-	}
-
-	.subreddits .item-list li {
-		margin-bottom: 20px;
-		margin-top: 10px;
-	}
-
-	.grid h2 {
-		margin: 5px auto;
-	}
-
-	.mu-text-field {
-		margin-top: 9px;
-	}
-
-</style>

@@ -21,13 +21,7 @@ import { mapGetters } from 'vuex'
             }
         },
         activated () {
-            if (this.sourceUrl.length !== 0)
-            {
-                this.delayLoading()
-            } else {
-                console.log('imgURL is empty!')
-                this.isLoading = true
-            }
+            this.showPic()
         },
         computed: {
             ...mapGetters([
@@ -49,6 +43,15 @@ import { mapGetters } from 'vuex'
                 setTimeout(() => {
                     this.isLoading = false
                 } , 800)
+            },
+            showPic () {
+                if (this.sourceUrl.length !== 0)
+                {
+                    this.delayLoading()
+                } else {
+                    console.log('imgURL is empty!')
+                    this.isLoading = true
+                }
             }
         }
     }
