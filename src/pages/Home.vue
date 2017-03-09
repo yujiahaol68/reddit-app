@@ -5,7 +5,7 @@
                 <mu-icon-button @click="toggleSideBar" icon="menu" slot="left"/>
             </mu-appbar>
         </v-touch>
-      <subreddits :refresh-state="refreshWhatever" class="container"></subreddits>        
+      <subreddits class="container"></subreddits>        
     </div>
 </template>
 
@@ -20,19 +20,16 @@ import Subreddits from '../components/Subreddits'
         },
         data () {
             return {
-                refreshWhatever: true,   //doubleTap refresh whatever the value
+                
             }
         },
         methods: {
             ...mapMutations([
                 'toggleSideBar'
             ]),
-            channelChange (val) {
-                this.channel = val
-            },
             refresh () {
                 console.log('refresh')
-                this.refreshWhatever = !this.refreshWhatever    //change the value, DOM render again
+                this.$store.dispatch('refreshList')
             }
         }
             

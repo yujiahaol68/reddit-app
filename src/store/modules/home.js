@@ -8,15 +8,17 @@ const state = {
     lastID: '',
     pageLimit: 25,
     sortWay: 'top',
-    sortOption: ['top', 'hot', 'new', 'rising'],
+    sortOption: ['top', 'hot', 'new'],
     isLoading: false
 }
 
 const getters = {
     getSubreddits: state => state.subreddits,
     getCategory: state => state.category,
+    getCategories: state => state.categories,
     getSort: state => state.sortWay,
-    getSortOption: state => state.sortOption
+    getSortOption: state => state.sortOption,
+    getLoadingStatus: state => state.isLoading
 }
 
 const mutations = {
@@ -37,6 +39,9 @@ const mutations = {
     },
     [types.SORTWAY_CHANGE] (state, current) {
         state.sortWay = current
+    },
+    [types.CLEAR_LIST] (state) {
+        state.subreddits = []
     }
 }
 
@@ -55,6 +60,14 @@ const actions = {
             commit(types.GET_MORE_LIST_DATA, res)
         })
         commit(types.COM_IS_LOADING, false)
+    },
+    refreshList: function ({commit, state}) {
+        commit(types.CLEAR_LIST)
+        commit(types.COM_IS_LOADING, true)
+        api.getSubreddits(state, (res) => {
+            commit(types.GET_LIST_DATA, res)
+        })
+        commit(types.COM_IS_LOADING, false)             
     }
 }
 

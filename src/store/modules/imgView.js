@@ -11,8 +11,15 @@ const mutations = {
     
 }
 
+const actions = {
+    passURL: function ({state}, url) {
+        state.imageUrl = url
+    }
+}
+
 export default {
     state,
     getters,
-    mutations
+    mutations,
+    actions
 }

@@ -17,7 +17,15 @@
                     </mu-list-item>
                     </a>
                 </router-link>
-                
+
+                <router-link :to="{ name: 'search' }" tag="div" active-class="active-item">
+                    <a>
+                    <mu-list-item title="Search" @click="sideBarClose()">
+                        <mu-icon slot="left" value="search"/>
+                    </mu-list-item>
+                    </a>
+                </router-link>
+            
             </mu-list>
         </mu-drawer>
     </div>

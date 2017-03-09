@@ -5,8 +5,9 @@
 
 ### [DEMO](https://yujiahaol68.github.io/reddit-app/)
 
-![](src/assets/preview/iPhone 5(1).png)
-![](src/assets/preview/iPhone 5(2).png)
+![](src/assets/preview/Reddit-App-01.png)
+![](src/assets/preview/Reddit-App-02.png)
+![](src/assets/preview/Reddit-App-03.png)
 
 ## Build Setup
 

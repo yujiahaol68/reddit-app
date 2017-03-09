@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
     mutations,
     actions,
     modules: {
-        sideBar, post, imgView
+        sideBar, post, imgView, home
     }
 
 })

@@ -32,9 +32,6 @@ import { mapGetters } from 'vuex'
             '$route': 'closeViewer'
         },
         methods: {
-            ...mapMutations([
-                
-            ]),
             closeViewer () {
                 console.log('Exit Viewer!')
                 this.isLoading = true
