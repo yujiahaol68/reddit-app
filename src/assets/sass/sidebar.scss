@@ -1,0 +1,9 @@
+$left-border-color: #00ADF4;
+
+.menu-list {
+    padding-top: 100px !important;
+}
+
+.active-item {
+    border-left: solid 2px $left-border-color;
+}
