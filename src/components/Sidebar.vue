@@ -32,8 +32,6 @@
 </template>
 
 <script>
-require('../assets/sass/sidebar.scss')
-
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'
 
@@ -60,3 +58,7 @@ import { mapGetters } from 'vuex'
     }
     
 </script>
+
+<style lang="scss" scoped>
+@import '../assets/sass/sidebar';
+</style>

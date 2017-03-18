@@ -137,8 +137,15 @@
   transition: opacity .5s
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter, .fade-leave-active {
   opacity: 0
 }
 
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
 
+.list-enter, .list-leave-active {
+  opacity: 0;
+  transform: translateY(30px);
+}

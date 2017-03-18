@@ -14,10 +14,14 @@
   		</div>
 		
 		<ul class="item-list">
+
 			<ul v-for="post in subreddits">
-				<li><subreddit :item="post"></subreddit></li>
+				<li>
+				<subreddit :item="post"></subreddit>
+				</li>
 				<mu-divider shallowInset/>
 			</ul>
+
 		</ul>
 
 		<mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loading-text="Loading..."/>
@@ -29,8 +33,6 @@
 require('../assets/sass/subreddits.scss')
 
 import Subreddit from './Subreddit' 	//subreddit list item component
-import axios from 'axios' 	//recommend plugin for ajax request
-import * as types from '../store/mutation-types'
 
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'

@@ -3,6 +3,9 @@
         <mu-appbar title="GIFs" class="app-bar">
             <mu-icon-button @click="toggleSideBar" icon="menu" slot="left"/>
         </mu-appbar>
+        <div class="container">
+            
+        </div>
     </div>
 </template>
 
@@ -27,6 +30,9 @@ import { mapMutations } from 'vuex'
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+.container {
+    padding-top: 56px;
+}
 </style>

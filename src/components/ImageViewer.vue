@@ -1,15 +1,11 @@
 <template>
-    <transition enter-active-class="animated zoomIn">
     <div class="image-viewer">
         <img v-if="isLoading" src="http://ojt3x01ru.bkt.clouddn.com/image/loading/circleLoading.svg" class="transition-img"></img>
         <img v-else :src="sourceUrl" class="showed-img">
     </div>
-    </transition>
 </template>
 
 <script>
-require('../assets/sass/img-viewer.scss')
-
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'
 
@@ -53,3 +49,7 @@ import { mapGetters } from 'vuex'
         }
     }
 </script>
+
+<style lang="scss" scoped>
+@import '../assets/sass/img-viewer.scss';
+</style>
