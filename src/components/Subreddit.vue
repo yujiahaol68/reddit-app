@@ -2,7 +2,7 @@
 	<div class="subreddit">
 		<router-link v-lazy:background-image="makeImage(item.data.thumbnail)" class="thumbnail" tag="div" :to="{ name: 'imageViewer' }" @click.native="sendImgData(item.data.url)"></router-link>
 		<div class="details">
-		<router-link :to="{ name: 'subdetail' }" class="title">
+		<router-link :to="{ name: 'subdetail', params: { id: item.data.name } }" @click.native="sendID(item.data.name)" class="title">
 			{{item.data.title | truncate}}
 		</router-link>
 		<br />
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-require('../assets/sass/subreddit.scss')
 
 	export default {
 		name: 'subreddit',
@@ -51,6 +50,9 @@ require('../assets/sass/subreddit.scss')
 					this.$store.dispatch('passURL', this.item.data.thumbnail)
 				}
 				console.log('commitURL!')
+			},
+			sendID: function(id) {
+				console.log('ID sent!')
 			}
 		},
 		filters: {
@@ -65,3 +67,7 @@ require('../assets/sass/subreddit.scss')
 		}
 	}
 </script>
+
+<style lang="scss" scoped>
+@import '../assets/sass/subreddit';
+</style>

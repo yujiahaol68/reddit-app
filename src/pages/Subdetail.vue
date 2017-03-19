@@ -3,6 +3,9 @@
         <mu-appbar>
             <mu-icon-button icon="arrow_back" slot="left" @click.native="backToHome"/>
         </mu-appbar>
+        <div class="container">
+        
+        </div>
     </div>
 </template>
 
@@ -25,6 +28,9 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+.container {
+    padding-top: 56px;
+}
 </style>

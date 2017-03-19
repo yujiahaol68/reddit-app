@@ -1,27 +1,21 @@
 // data for detail page
 
 const state = {
-    hasHTML: false,
+    id: '',
     title: '',
     author: '',
     authorAvatar: '...defaultImageLink',
-    hasImg: true,
     headImgSourse: '',
     body: '',
     permalink: ''
 }
 
 const getters = {
-    resetPost: state => {
-        state.hasHTML = false
-        state.title = ''
-        state.author = ''
-        state.authorAvatar = '...defaultImageLink'
-        state.hasImg = true
-        state.headImgSourse = ''
-        state.body = ''
-        state.permalink = ''
-    }
+    getTitle: state => state.title,
+    getAuthor: state => state.author,
+    getHeadImg: state => state.headImgSourse,
+    getBody: state => state.body,
+    getLink: state => state.permalink
 }
 
 const mutations = {

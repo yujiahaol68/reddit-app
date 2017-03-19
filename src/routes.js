@@ -9,7 +9,7 @@ export const routes = [
     { path: '', component: Home, name: 'home' },
     { path: '/gifs', component: Gifs, name: 'gifs' },
     { path: 'search', component: Search, name: 'search' },
-    { path: '/subdetail', component: Subdetail, name: 'subdetail' },
+    { path: '/subdetail/:id', component: Subdetail, name: 'subdetail' },
     { path: '/viewer', component: ImageViewer, name: 'imageViewer' },
     { path: '*', component: NotFound, name: 'notFound' }
 ]
