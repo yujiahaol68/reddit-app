@@ -2,7 +2,7 @@
   "name": "redditapp",
   "version": "1.0.0",
   "description": "A mobile-first reddit web app using vue-cli webpack template for Vue 2",
-  "author": "Tecker.Yu <767954505@qq.com>",
+  "author": "Tecker.Yu <tecker_yuknigh@163.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
