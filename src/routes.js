@@ -11,5 +11,5 @@ export const routes = [
     { path: 'search', component: Search, name: 'search' },
     { path: '/subdetail/:id', component: Subdetail, name: 'subdetail' },
     { path: '/viewer', component: ImageViewer, name: 'imageViewer' },
-    { path: '*', component: NotFound, name: 'notFound' }
+//Not Found page { path: '*', component: NotFound, name: 'notFound' }
 ]
