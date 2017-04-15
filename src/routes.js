@@ -8,7 +8,7 @@ import ImageViewer from './components/ImageViewer.vue'
 export const routes = [
     { path: '', component: Home, name: 'home' },
     { path: '/gifs', component: Gifs, name: 'gifs' },
-    { path: 'search', component: Search, name: 'search' },
+    { path: '/search', component: Search, name: 'search' },
     { path: '/subdetail/:id', component: Subdetail, name: 'subdetail' },
     { path: '/viewer', component: ImageViewer, name: 'imageViewer' },
 //Not Found page { path: '*', component: NotFound, name: 'notFound' }
