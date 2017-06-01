@@ -6,7 +6,9 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var workboxPlugin = require('workbox-webpack-plugin')
 var env = config.build.env
+var DIST_DIR = 'dist'
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -74,6 +76,12 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
+    }),
+    // enable service worker when build app everytime
+    new workboxPlugin({
+      globDirectory: DIST_DIR,
+      staticFileGlobs: ['**/*.{html,js,css}'],
+      swDest: path.join(DIST_DIR, 'sw.js')
     })
   ]
 })
